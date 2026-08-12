@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+<html lang=" uz">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beauty Shop</title>
+        <!DOCTYPE html>
+        <html lang="ru">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Bloom Beauty</title>
+
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+
+                body {
+                    font-family: Arial, sans-serif;
+                    color: #222;
+                    background: white;
+                }
+
+                /* ================= HEADER ================= */
+
+                .top-header {
+                    height: 62px;
+                    border-bottom: 1px solid #eee;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 0 5%;
+                }
+
+                .logo {
+                    font-size: 38px;
+                    font-weight: bold;
+                    color: #e94d61;
+                    letter-spacing: -2px;
+                }
+
+                .header-right {
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+                    font-size: 15px;
+                }
+
+                .icons {
+                    display: flex;
+                    gap: 22px;
+                    font-size: 24px;
+                    align-items: center;
+                }
+
+                /* ================= MENU ================= */
+
+                .menu {
+                    height: 55px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .menu a {
+                    text-decoration: none;
+                    color: #222;
+                    margin: 0 28px;
+                    font-size: 15px;
+                    transition: 0.3s;
+                }
+
+                .menu a:hover {
+                    color: #ed5365;
+                }
+
+                .menu .active {
+                    color: #ed5365;
+                }
+
+                /* ================= HERO ================= */
+
+                .hero {
+                    height: 500px;
+                    background-image:
+                        url("https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1800&q=90");
+                    background-size: cover;
+                    background-position: center;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .hero::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(90deg,
+                            rgba(220, 245, 247, 0.9),
+                            rgba(220, 245, 247, 0.25),
+                            rgba(255, 255, 255, 0));
+                }
+
+                .hero-content {
+                    position: relative;
+                    z-index: 2;
+                    margin-left: 6%;
+                    max-width: 650px;
+                }
+
+                .hero-content h1 {
+                    font-size: 58px;
+                    line-height: 1.05;
+                    color: #ef3d22;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                }
+
+                .hero-content p {
+                    margin-top: 20px;
+                    font-size: 20px;
+                    color: #444;
+                }
+
+                .hero-btn {
+                    margin-top: 25px;
+                    padding: 15px 35px;
+                    border: none;
+                    background: #ef5365;
+                    color: white;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+
+                .hero-btn:hover {
+                    background: #d93c4e;
+                }
+
+                /* ================= DOTS ================= */
+
+                .dots {
+                    position: absolute;
+                    bottom: 18px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .dot {
+                    width: 10px;
+                    height: 10px;
+                    background: white;
+                    border-radius: 50%;
+                }
+
+                .dot.active {
+                    background: #ed5365;
+                }
+
+                /* ================= CATEGORY ================= */
+
+                .categories {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 18px;
+                    padding: 45px 5%;
+                }
+
+                .category {
+                    height: 280px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    position: relative;
+                    cursor: pointer;
+                }
+
+                .category img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: 0.5s;
+                }
+
+                .category:hover img {
+                    transform: scale(1.06);
+                }
+
+                .category::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(transparent 40%,
+                            rgba(0, 0, 0, 0.7));
+                }
+
+                .category-text {
+                    position: absolute;
+                    z-index: 2;
+                    bottom: 25px;
+                    left: 25px;
+                    color: white;
+                }
+
+                .category-text h2 {
+                    font-size: 25px;
+                    margin-bottom: 8px;
+                }
+
+                .category-text p {
+                    font-size: 15px;
+                }
+
+                /* ================= SERVICES ================= */
+
+                .services {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    padding: 35px 6%;
+                    border-top: 1px solid #eee;
+                }
+
+                .service {
+                    display: flex;
+                    align-items: center;
+                    gap: 18px;
+                    padding: 15px 25px;
+                    border-right: 1px solid #ddd;
+                }
+
+                .service:last-child {
+                    border: none;
+                }
+
+                .service-icon {
+                    font-size: 35px;
+                }
+
+                .service h3 {
+                    font-size: 16px;
+                    margin-bottom: 7px;
+                }
+
+                .service p {
+                    font-size: 13px;
+                    color: #777;
+                }
+
+                /* ================= FOOTER ================= */
+
+                footer {
+                    background: #f8f8f8;
+                    padding: 30px;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+
+                footer .logo {
+                    font-size: 30px;
+                    margin-bottom: 10px;
+                }
+
+                /* ================= MOBILE ================= */
+
+                @media (max-width: 900px) {
+
+                    .categories {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    .services {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    .service {
+                        border: none;
+                    }
+
+                    .hero-content h1 {
+                        font-size: 42px;
+                    }
+
+                    .menu a {
+                        margin: 0 10px;
+                    }
+                }
+
+                @media (max-width: 600px) {
+
+                    .top-header {
+                        padding: 0 20px;
+                    }
+
+                    .header-right {
+                        display: none;
+                    }
+
+                    .menu {
+                        overflow-x: auto;
+                        justify-content: flex-start;
+                        padding-left: 15px;
+                    }
+
+                    .menu a {
+                        white-space: nowrap;
+                    }
+
+                    .hero {
+                        height: 400px;
+                    }
+
+                    .hero-content {
+                        margin-left: 25px;
+                        margin-right: 20px;
+                    }
+
+                    .hero-content h1 {
+                        font-size: 35px;
+                    }
+
+                    .categories {
+                        grid-template-columns: 1fr;
+                        padding: 25px;
+                    }
+
+                    .services {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .service {
+                        border-bottom: 1px solid #ddd;
+                    }
+                }
+            </style>
+        </head>
+
+    <body>
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="top-header">
+
+            <div class="logo">
+                bloom
+            </div>
+
+            <div class="header-right">
+
+                <span>Language ▾</span>
+
+                <b>55 517 77 88</b>
+
+                <div class="icons">
+                    <span>✈</span>
+                    <span>⌕</span>
+                    <span>♡</span>
+                    <span>♙</span>
+                    <span>🛍</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <nav class="menu">
+
+            <a href="#">Catalog</a>
+            <a href="#">Brands</a>
+            <a href="#">New arrivals</a>
+            <a href="#">Hits</a>
+
+            <a href="#" class="active">
+                Promotions
+            </a>
+
+            <a href="#">Blog</a>
+            <a href="#">Stores</a>
+            <a href="#">Gift cards</a>
+            <a href="#">Sales</a>
+
+        </nav>
+
+
+        <!-- ================= BIG IMAGE ZONE ================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h1>
+                    Самое нужное<br>
+                    для лета
+                </h1>
+
+                <p>
+                    Уход за кожей и защита от солнца
+                </p>
+
+                <button class="hero-btn">
+                    Смотреть товары
+                </button>
+
+            </div>
+
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+        </section>
+
+
+        <!-- ================= CATEGORY IMAGE ZONES ================= -->
+
+        <section class="categories">
+
+            <!-- 1 -->
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h2>Для лица</h2>
+                    <p>Смотреть все →</p>
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1556229010-aa3d52b1e7c8?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h2>Уход за кожей</h2>
+                    <p>Смотреть все →</p>
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h2>Для волос</h2>
+                    <p>Смотреть все →</p>
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h2>Акции</h2>
+                    <p>Смотреть все →</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <section class="services">
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🚚
+                </div>
+
+                <div>
+                    <h3>Быстрая доставка</h3>
+                    <p>По всему Узбекистану</p>
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🏷️
+                </div>
+
+                <div>
+                    <h3>Оригинальная продукция</h3>
+                    <p>100% гарантия качества</p>
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🎁
+                </div>
+
+                <div>
+                    <h3>Подарки и бонусы</h3>
+                    <p>Постоянным клиентам</p>
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🎧
+                </div>
+
+                <div>
+                    <h3>Поддержка 24/7</h3>
+                    <p>Мы всегда на связи</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <div class="logo">
+                bloom
+            </div>
+
+            <p>
+                Beauty & Cosmetics Store © 2026
+            </p>
+
+        </footer>
+
+    </body>
+
+</html>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #ffeef5;
+    }
+
+    header {
+        background: linear-gradient(90deg, #ff4f81, #ff8fb2);
+        color: white;
+        text-align: center;
+        padding: 25px;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .container {
+        width: 75%;
+        margin: 40px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+        transition: .4s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .card h2 {
+        text-align: center;
+        margin-top: 10px;
+        color: #ff4f81;
+    }
+
+    .card p {
+        text-align: center;
+        margin: 8px;
+    }
+
+    .price {
+        font-size: 22px;
+        color: green;
+        font-weight: bold;
+    }
+
+    button {
+        display: block;
+        margin: 15px auto 20px;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 30px;
+        background: #ff4f81;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #ff2568;
+    }
+</style>
+
+
+</head>
+
+
+<body>
+    <!DOCTYPE html>
+    <html lang="uz">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beauty Brands</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                padding: 35px 40px;
+                font-family: Arial, sans-serif;
+                background: white;
+            }
+
+            .brands {
+                display: flex;
+                justify-content: center;
+                gap: 28px;
+                overflow-x: auto;
+            }
+
+            .brand {
+                min-width: 88px;
+                text-align: center;
+            }
+
+            .circle {
+                width: 82px;
+                height: 82px;
+                border-radius: 50%;
+                padding: 3px;
+
+                background: linear-gradient(135deg,
+                        #6a00ff,
+                        #d600ff,
+                        #ff4b9b,
+                        #ffb300);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .circle img {
+                width: 74px;
+                height: 74px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid white;
+            }
+
+            .brand-name {
+                margin-top: 12px;
+                font-size: 14px;
+                color: #111;
+                white-space: nowrap;
+            }
+
+            /* Telefon uchun */
+            @media (max-width: 800px) {
+                body {
+                    padding: 25px 15px;
+                }
+
+                .brands {
+                    justify-content: flex-start;
+                    gap: 20px;
+                }
+
+                .circle {
+                    width: 75px;
+                    height: 75px;
+                }
+
+                .circle img {
+                    width: 67px;
+                    height: 67px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="brands">
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Korres</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Payot</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Furla</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">GA-DE</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Olaplex</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Lumene</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Phyto Paris</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">Lisap</div>
+            </div>
+
+            <div class="brand">
+                <div class="circle">
+                    <img
+                        src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=300&q=80">
+                </div>
+                <div class="brand-name">True Men Sk...</div>
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>
+    <br>
+    <br>
+
+    <header>💄 Beauty Makeup & Skincare Shop ✨</header>
+
+    <div class="container">
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMHhe6Iu5pG3qFoOk1BG0NrgXEgB-9URRKh8igaaV3_w&s">
+            <h2>Cleanser</h2>
+            <p>Yuzni tozalovchi gel</p>
+            <p class="price">$12</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1QbikFGdb679guuDmUohro9gXrbQ5Tw-aIqqNpQuo9w&s=10">
+            <h2>Moisturizer</h2>
+            <p>Namlagich krem</p>
+            <p class="price">$18</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJCUB6aFMMltuZxrfXvd9YTmEIl72Fl8zBZ5Aq5mRbJA&s=10">
+            <h2>Serum</h2>
+            <p>Vitamin C serum</p>
+            <p class="price">$22</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTncvgqcxj1pcosMT0v7e-K9caXMCLXJlHtBGvLfBvcFw&s=10">
+            <h2>Sunscreen</h2>
+            <p>SPF 50+</p>
+            <p class="price">$16</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ17aYJCKNWwybig0Zb6U0GhW3doZzYnAavZhvTTqNgg&s=10">
+            <h2>Toner</h2>
+            <p>Yuz toneri</p>
+            <p class="price">$10</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgjyBcxFIQPYl_ZCOmmMoSQShaYHGLioUmfRQGrEbhw&s=10">
+            <h2>Face Mask</h2>
+            <p>Sheet mask</p>
+            <p class="price">$8</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiDHf-KBLqOz3Ow-IbZn-X3nKX-rDX68bQ0cIvP1aZAA&s=10">
+            <h2>Primer</h2>
+            <p>Makeup primer</p>
+            <p class="price">$15</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzPmVPzDe6vcosWsGdjf9qM_NUENmHJZgTwvRdxeUptQ&s=10">
+            <h2>Foundation</h2>
+            <p>Liquid foundation</p>
+            <p class="price">$25</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOjsdvaPy_Zl1m6kZVTBw8GCsDKbXAefCdxpX0d_Ccdw&s=10">
+            <h2>Concealer</h2>
+            <p>Full Cover</p>
+            <p class="price">$13</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jzpIOrV7e25geAy1Coh6vNLb59OyZbcwE-PxzJrVlA&s">
+            <h2>Powder</h2>
+            <p>Compact Powder</p>
+            <p class="price">$17</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFDwj9yqs2RT0jAlYRSYrh9lTSpN_13vvUurwd07vDQ&s=10">
+            <h2>Blush</h2>
+            <p>Pink Blush</p>
+            <p class="price">$11</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl_-rXuD0DZj60Bi8ydFYw4OJ7h1YMR9fSQD0nIIIrBw&s">
+            <h2>Bronzer</h2>
+            <p>Natural Glow</p>
+            <p class="price">$18</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe7Ss6AyCTXuosUliY6xdCDRGeCNx0sN0OUVOko6YwHA&s">
+            <h2>Highlighter</h2>
+            <p>Shine Effect</p>
+            <p class="price">$19</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbt9w5H1yP7QSF5AZH0MvkDbghHnt-az622_GzO9F6Jg&s=10">
+            <h2>Eyeshadow</h2>
+            <p>12 Color Palette</p>
+            <p class="price">$28</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScTmwFA8TTOgP2vmUBp3wJNeHhBjIibDEMlyjCQPpa7w&s=10">
+            <h2>Eyeliner</h2>
+            <p>Waterproof</p>
+            <p class="price">$9</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBCUrqKqs8pMAjFuGEQhtKv1AXXo7AXjR20jR-oqgY9w&s=10">
+            <h2>Mascara</h2>
+            <p>Volume Lash</p>
+            <p class="price">$14</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj7ISATKy11Na3VFPQcE3Y9kV79OI5AehQue5zWRsF1A&s">
+            <h2>Lipstick</h2>
+            <p>Matte Red</p>
+            <p class="price">$12</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0Xp75nQUy6gTBuZHo6joiqZVSdCn19U8FHuZtwLZ9A&s=10">
+            <h2>Lip Gloss</h2>
+            <p>Glossy Shine</p>
+            <p class="price">$10</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqiOjrc_yfRFLtlDbxTLWHMpUBEU-H3DB2SXO4UyiTqA&s=10">
+            <h2>Makeup Brush Set</h2>
+            <p>10 dona</p>
+            <p class="price">$30</p>
+            <button>Sotib olish</button>
+        </div>
+
+        <div class="card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJz1i-aDfvnxIdEvOyhb-0M4mzLK5mzVwbwyEMAg4Gtg&s=10">
+            <h2>Beauty Blender</h2>
+            <p>Soft Sponge</p>
+            <p class="price">$7</p>
+            <button>Sotib olish</button>
+        </div>
+
+    </div>
+
+</body>
+
+
+<title>Document</title>
+</head>
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Footer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            color: #111;
+        }
+
+        /* PAGINATION */
+        .pagination {
+            height: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-size: 14px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #111;
+        }
+
+        .pagination .active {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #e94b59;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination a:hover {
+            color: #e94b59;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #f5f5f5;
+            padding: 50px 8% 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+            gap: 60px;
+            min-height: 265px;
+        }
+
+        /* LOGO */
+        .logo {
+            font-size: 52px;
+            font-weight: bold;
+            color: #e94b59;
+            letter-spacing: -4px;
+        }
+
+        .logo sup {
+            font-size: 10px;
+            vertical-align: top;
+            letter-spacing: 0;
+        }
+
+        /* FOOTER COLUMNS */
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 18px;
+        }
+
+        .footer-column a {
+            display: block;
+            text-decoration: none;
+            color: #111;
+            font-size: 15px;
+            margin-bottom: 17px;
+        }
+
+        .footer-column a:hover {
+            color: #e94b59;
+        }
+
+        /* SOCIAL */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            margin-bottom: 18px;
+        }
+
+        .social {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .facebook {
+            background: #1877f2;
+        }
+
+        .telegram {
+            background: #29a9ea;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #ffdc80, #e1306c, #833ab4);
+        }
+
+        /* LINE */
+        .line {
+            width: 100%;
+            height: 1px;
+            background: #d7d7d7;
+            margin-bottom: 16px;
+        }
+
+        /* APP BUTTONS */
+        .apps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .app-button {
+            width: 120px;
+            height: 43px;
+            background: #050505;
+            border-radius: 8px;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 9px;
+        }
+
+        .app-icon {
+            font-size: 22px;
+        }
+
+        .app-text {
+            font-size: 9px;
+            line-height: 12px;
+        }
+
+        .app-text strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        /* BOTTOM */
+        .footer-bottom {
+            height: 43px;
+            margin-left: -8.7%;
+            margin-right: -8.7%;
+
+            background: #e94b59;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 3.2%;
+            font-size: 14px;
+        }
+
+        .payments {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .visa {
+            font-style: italic;
+            font-size: 23px;
+        }
+
+        .mastercard {
+            font-size: 22px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer {
+                padding: 40px 6% 0;
+            }
+
+            .footer-bottom {
+                margin-left: -6.5%;
+                margin-right: -6.5%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .pagination {
+                height: 180px;
+                gap: 18px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .logo {
+                font-size: 45px;
+            }
+
+            .footer-bottom {
+                height: auto;
+                padding: 15px;
+                gap: 10px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+
+        <a href="#">«</a>
+
+        <a href="#" class="active">1</a>
+
+        <a href="#">2</a>
+
+        <a href="#">...</a>
+
+        <a href="#">317</a>
+
+        <a href="#">»</a>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- LOGO -->
+            <div>
+                <div class="logo">
+                    bloom<sup>®</sup>
+                </div>
+            </div>
+
+
+            <!-- INFORMATION -->
+            <div class="footer-column">
+
+                <h3>Information</h3>
+
+                <a href="#">Stores</a>
+                <a href="#">Brands</a>
+                <a href="#">New arrivals</a>
+                <a href="#">Promotions</a>
+                <a href="#">Blog</a>
+
+            </div>
+
+
+            <!-- ABOUT US -->
+            <div class="footer-column">
+
+                <h3>About us</h3>
+
+                <a href="#">About the company</a>
+                <a href="#">Vacancies</a>
+                <a href="#">Public offer</a>
+                <a href="#">Payment & Delivery</a>
+
+            </div>
+
+
+            <!-- SOCIAL NETWORKS -->
+            <div class="footer-column">
+
+                <h3>Social networks</h3>
+
+                <div class="social-icons">
+
+                    <div class="social facebook">f</div>
+
+                    <div class="social telegram">➤</div>
+
+                    <div class="social instagram">◎</div>
+
+                </div>
+
+                <div class="line"></div>
+
+                <div class="apps">
+
+                    <!-- APP STORE -->
+                    <div class="app-button">
+                        <div class="app-icon"></div>
+
+                        <div class="app-text">
+                            Download on
+                            <strong>App Store</strong>
+                        </div>
+                    </div>
+
+
+                    <!-- GOOGLE PLAY -->
+                    <div class="app-button">
+
+                        <div class="app-icon">▶</div>
+
+                        <div class="app-text">
+                            Download on
+                            <strong>Google Play</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- APP GALLERY -->
+                    <div class="app-button">
+
+                        <div class="app-icon">▣</div>
+
+                        <div class="app-text">
+                            GET IT ON
+                            <strong>AppGallery</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM -->
+        <div class="footer-bottom">
+
+            <div>
+                © 2026 Bloombeauty.uz
+            </div>
+
+            <div class="payments">
+
+                <span>Payme</span>
+                <span>Click</span>
+                <span>VISA</span>
+                <span class="mastercard">●●</span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Global</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+
+        .header {
+            height: 80px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 0 22px;
+            gap: 25px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 14px;
+            color: #555;
+            flex-shrink: 0;
+        }
+
+        .flags {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .flag {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid #eee;
+        }
+
+        /* Bayroqlar */
+        .austria {
+            background: linear-gradient(to bottom,
+                    #ed2939 0 33%,
+                    white 33% 66%,
+                    #ed2939 66%);
+        }
+
+        .belgium {
+            background: linear-gradient(to right,
+                    #111 0 33%,
+                    #ffd700 33% 66%,
+                    #ed2939 66%);
+        }
+
+        .bulgaria {
+            background: linear-gradient(to bottom,
+                    white 0 33%,
+                    #00966e 33% 66%,
+                    #d62612 66%);
+        }
+
+        .croatia {
+            background: linear-gradient(to bottom,
+                    white 0 33%,
+                    #171796 33% 66%,
+                    #ed2939 66%);
+        }
+
+        .czech {
+            background: linear-gradient(to bottom,
+                    white 0 50%,
+                    #d7141a 50%);
+        }
+
+        .denmark {
+            background:
+                linear-gradient(to right,
+                    transparent 0 35%,
+                    white 35% 45%,
+                    transparent 45%),
+                linear-gradient(to bottom,
+                    transparent 0 40%,
+                    white 40% 55%,
+                    transparent 55%),
+                #c8102e;
+        }
+
+        .estonia {
+            background: linear-gradient(to bottom,
+                    #0072ce 0 33%,
+                    #000 33% 66%,
+                    white 66%);
+        }
+
+        .finland {
+            background:
+                linear-gradient(to right,
+                    transparent 0 35%,
+                    #003580 35% 55%,
+                    transparent 55%),
+                linear-gradient(to bottom,
+                    transparent 0 38%,
+                    #003580 38% 58%,
+                    transparent 58%),
+                white;
+        }
+
+        .france {
+            background: linear-gradient(to right,
+                    #0055a4 0 33%,
+                    white 33% 66%,
+                    #ef4135 66%);
+        }
+
+        .germany {
+            background: linear-gradient(to bottom,
+                    #111 0 33%,
+                    #d00 33% 66%,
+                    #ffce00 66%);
+        }
+
+        .greece {
+            background: repeating-linear-gradient(to bottom,
+                    #0d5eaf 0 2px,
+                    white 2px 4px);
+        }
+
+        .hungary {
+            background: linear-gradient(to bottom,
+                    #ce2939 0 33%,
+                    white 33% 66%,
+                    #477050 66%);
+        }
+
+        .ireland {
+            background: linear-gradient(to right,
+                    #169b62 0 33%,
+                    white 33% 66%,
+                    #ff883e 66%);
+        }
+
+        .israel {
+            background:
+                linear-gradient(to bottom,
+                    #0038b8 0 20%,
+                    white 20% 80%,
+                    #0038b8 80%);
+        }
+
+        .italy {
+            background: linear-gradient(to right,
+                    #009246 0 33%,
+                    white 33% 66%,
+                    #ce2b37 66%);
+        }
+
+        .japan {
+            background: radial-gradient(circle,
+                    #bc002d 0 35%,
+                    white 36%);
+        }
+
+        .latvia {
+            background: linear-gradient(to bottom,
+                    #9e3039 0 40%,
+                    white 40% 60%,
+                    #9e3039 60%);
+        }
+
+        .lithuania {
+            background: linear-gradient(to bottom,
+                    #fdbb30 0 33%,
+                    #006a44 33% 66%,
+                    #c1272d 66%);
+        }
+
+        .luxembourg {
+            background: linear-gradient(to bottom,
+                    #ed2939 0 33%,
+                    white 33% 66%,
+                    #00a1de 66%);
+        }
+
+        .netherlands {
+            background: linear-gradient(to bottom,
+                    #ae1c28 0 33%,
+                    white 33% 66%,
+                    #21468b 66%);
+        }
+
+        .norway {
+            background: #ba0c2f;
+        }
+
+        .poland {
+            background: linear-gradient(to bottom,
+                    white 0 50%,
+                    #dc143c 50%);
+        }
+
+        .portugal {
+            background: linear-gradient(to right,
+                    #046a38 0 40%,
+                    #da291c 40%);
+        }
+
+        .romania {
+            background: linear-gradient(to right,
+                    #002b7f 0 33%,
+                    #fcd116 33% 66%,
+                    #ce1126 66%);
+        }
+
+        .slovakia {
+            background: linear-gradient(to bottom,
+                    white 0 33%,
+                    #0b4ea2 33% 66%,
+                    #ee1c25 66%);
+        }
+
+        .slovenia {
+            background: linear-gradient(to bottom,
+                    white 0 33%,
+                    #005ce6 33% 66%,
+                    #ed1c24 66%);
+        }
+
+        .spain {
+            background: linear-gradient(to bottom,
+                    #aa151b 0 25%,
+                    #f1bf00 25% 75%,
+                    #aa151b 75%);
+        }
+
+        .sweden {
+            background:
+                linear-gradient(to right,
+                    transparent 0 30%,
+                    #006aa7 30% 50%,
+                    transparent 50%),
+                linear-gradient(to bottom,
+                    transparent 0 40%,
+                    #006aa7 40% 60%,
+                    transparent 60%),
+                #fecc00;
+        }
+
+        .switzerland {
+            background: #d52b1e;
+        }
+
+        .ukraine {
+            background: linear-gradient(to bottom,
+                    #0057b7 0 50%,
+                    #ffd700 50%);
+        }
+
+        .uk {
+            background: #012169;
+        }
+
+        .usa {
+            background: repeating-linear-gradient(to bottom,
+                    #b22234 0 2px,
+                    white 2px 4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            Makeup Global
+        </div>
+
+        <div class="flags">
+
+            <span class="flag austria"></span>
+            <span class="flag belgium"></span>
+            <span class="flag bulgaria"></span>
+            <span class="flag croatia"></span>
+            <span class="flag czech"></span>
+            <span class="flag denmark"></span>
+            <span class="flag estonia"></span>
+            <span class="flag finland"></span>
+            <span class="flag france"></span>
+            <span class="flag germany"></span>
+            <span class="flag greece"></span>
+            <span class="flag hungary"></span>
+            <span class="flag ireland"></span>
+            <span class="flag israel"></span>
+            <span class="flag italy"></span>
+            <span class="flag japan"></span>
+            <span class="flag latvia"></span>
+            <span class="flag lithuania"></span>
+            <span class="flag luxembourg"></span>
+            <span class="flag netherlands"></span>
+            <span class="flag norway"></span>
+            <span class="flag poland"></span>
+            <span class="flag portugal"></span>
+            <span class="flag romania"></span>
+            <span class="flag slovakia"></span>
+            <span class="flag slovenia"></span>
+            <span class="flag spain"></span>
+            <span class="flag sweden"></span>
+            <span class="flag switzerland"></span>
+            <span class="flag ukraine"></span>
+            <span class="flag uk"></span>
+            <span class="flag usa"></span>
+
+        </div>
+
+    </header>
+
+</body>
+
+</html>
+
+<body>
+
+</body>
+
+</html>
